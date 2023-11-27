@@ -27,7 +27,7 @@ public:
 
 	string GetAllActive();
 	string GetAllDeleted();
-	void Insert(const StudentRecord& rec);
+	bool Insert(const StudentRecord& rec);
 	void DeleteRec(int id);
 	int CalcHashKey(int id);
 

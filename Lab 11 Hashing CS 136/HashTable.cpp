@@ -86,41 +86,44 @@ string HashTable::GetAllDeleted() {
 	return table;
 }
 
-void HashTable::Insert(const StudentRecord& rec) {
+bool HashTable::Insert(const StudentRecord& rec) {
 	int index = CalcHashKey(rec.getID());
 	int wasInserted = false;
 	if (!IsHashTableFull()) {
 		if (IsEmptySpot(hashTable[index])) {
 			hashTable[index] = rec;
 			numRecInTable++;
-			cout << "insertion Successful\n";
+			wasInserted = true;
+			//cout << "insertion Successful\n";
 		}
 		else if (!IsOverflowTableFull()) {
-			cout << "\ninserting in overflow\n";
+			//cout << "\ninserting in overflow\n";
 			overflowTable[overflowIndex] = rec;
+			wasInserted = true;
 			overflowIndex++;
 		}
-		else {
-			for (int i = index + 1; !wasInserted; i++ % tableSize) {
-				if (IsEmptySpot(hashTable[i])) {
-					hashTable[i] = rec;
-					wasInserted = true;
-					numRecInTable++;
-					cout << "insertion successful\n";
-				}
-				else {
-					cout << "hasTable[" << i << "] has a student record in it" << endl;
-				}
-			}
-		}
+		//else {
+		//	for (int i = index + 1; !wasInserted; i++ % tableSize) {
+		//		if (IsEmptySpot(hashTable[i])) {
+		//			hashTable[i] = rec;
+		//			wasInserted = true;
+		//			numRecInTable++;
+		//			cout << "insertion successful\n";
+		//		}
+		//		else {
+		//			cout << "hasTable[" << i << "] has a student record in it" << endl;
+		//		}
+		//	}
+		//}
 	}
 	else if (!IsOverflowTableFull()) {
 		overflowTable[overflowIndex] = rec;
 		overflowIndex++;
 	}
 	else {
-		cout << "Both Tables Full, put Record in unprocessed file\n";
+		wasInserted = false;
 	}
+	return wasInserted;
 }
 
 void HashTable::DeleteRec(int id) {
