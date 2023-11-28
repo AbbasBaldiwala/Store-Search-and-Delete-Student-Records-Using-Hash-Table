@@ -10,7 +10,8 @@ using namespace std;
 const int ID_LEN = 9,
 SETW_ID = ID_LEN + 3,
 SETW_NAME = 15,
-SETW_UNITS = 7;
+SETW_UNITS = 11,
+TABLE_SIZE = SETW_ID + SETW_NAME + SETW_NAME + SETW_UNITS;
 
 class StudentRecord {
 public:
@@ -25,7 +26,7 @@ public:
 	bool isDeleted() const { return deleted; }
 
 	void setDeleteStatus(bool isDeleted) { deleted = isDeleted; }
-	string ToString();
+	string ToString() const;
 
 private:
 	int id = -1;

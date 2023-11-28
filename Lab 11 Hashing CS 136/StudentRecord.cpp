@@ -8,7 +8,7 @@ void StudentRecord::setRecord(int idNum, string first, string last, int units) {
 	deleted = false;
 }
 
-string StudentRecord::ToString() {
+string StudentRecord::ToString() const {
 	stringstream ss;
 	ss << left << setw(SETW_ID) << id << setw(SETW_NAME) << firstName << setw(SETW_NAME) << lastName << right << setw(SETW_UNITS) << numUnitsTaken << "\n";
 	return ss.str();
