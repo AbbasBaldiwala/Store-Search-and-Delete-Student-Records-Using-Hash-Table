@@ -216,7 +216,7 @@ void HashTable::SearchByID(int id, string header, string border) const{
 }
 
 /*pre: none
-post: the object is destroyed*/
+post: the 2 tables are freed from memory*/
 void HashTable::DeleteHashTable() {
 	delete[] hashTable;
 	delete[] overflowTable;
