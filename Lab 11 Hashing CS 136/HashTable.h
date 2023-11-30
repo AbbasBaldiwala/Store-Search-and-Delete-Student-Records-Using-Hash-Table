@@ -42,7 +42,7 @@ private:
 		numRecInTable = 0;
 	StudentRecord* hashTable = nullptr;
 	StudentRecord* overflowTable = nullptr;
-	void CopyTable(const HashTable& other); //copies other into current table
+	void CopyTable(const HashTable& other, StudentRecord* hashP, StudentRecord* overflowP); //copies other into current table
 	void DeleteHashTable();	//deleted the tables
 };
 

@@ -18,11 +18,14 @@ void HashTable::SetTable(int size) {
 		overflowTableSize = 0;
 		overflowIndex = 0;
 		numRecInTable = 0;
+		delete[] hashTable;
+		delete[] overflowTable;
 		hashTable = nullptr;
 		overflowTable = nullptr;
 		cerr << "Creation of Hash Table failed, " << error.what();
 	}
 }
+
 
 /*pre: id must be the correct length
 post: the index is returned*/
@@ -53,15 +56,6 @@ int HashTable::CalcHashKey(int id) const{
 	return stoi(keyS);
 }
 
-/*pre: none
-post: the object is destroyed*/
-void HashTable::DeleteHashTable() {
-	delete[] hashTable;
-	delete[] overflowTable;
-
-	hashTable = nullptr;
-	overflowTable = nullptr;
-}
 
 /*pre: none
 post: all active records are returned as a formatted table*/
@@ -112,29 +106,20 @@ bool HashTable::Insert(const StudentRecord& rec) {
 			hashTable[index] = rec;
 			numRecInTable++;
 			wasInserted = true;
-			//cout << "insertion Successful\n";
 		}
-		else if (!IsOverflowTableFull()) {
-			//cout << "\ninserting in overflow\n";
-			overflowTable[overflowIndex] = rec;
-			wasInserted = true;
-			overflowIndex++;
+		else {
+			for (int i = index + 1; i < tableSize && !wasInserted; i = (i + 1) % tableSize) {
+				if (IsEmptySpot(hashTable[i])) {
+					hashTable[i] = rec;
+					wasInserted = true;
+					numRecInTable++;
+					//cout << "insertion successful\n" << rec.getID();
+				}
+			}
 		}
-		//else {
-		//	for (int i = index + 1; !wasInserted; i++ % tableSize) {
-		//		if (IsEmptySpot(hashTable[i])) {
-		//			hashTable[i] = rec;
-		//			wasInserted = true;
-		//			numRecInTable++;
-		//			cout << "insertion successful\n";
-		//		}
-		//		else {
-		//			cout << "hasTable[" << i << "] has a student record in it" << endl;
-		//		}
-		//	}
-		//}
 	}
 	else if (!IsOverflowTableFull()) {
+		wasInserted = true;
 		overflowTable[overflowIndex] = rec;
 		overflowIndex++;
 	}
@@ -160,18 +145,30 @@ void HashTable::DeleteRec(int id) {
 			cout << "Student with id # " << id << " already deleted\n\n";
 		}
 	}
-	else {
-		for (int i = 0; i < overflowTableSize; i++) {
-			if (overflowTable[i].getID() == id) {
+	else { //check rest of of hash table
+		for (int i = index + 1; i != index && !wasDeleted; i = (i + 1) % tableSize) {
+			if (hashTable[i].getID() == id) {
 				wasDeleted = true;
-				if (overflowTable[i].isDeleted() == false) {
-					//cout << "BEFORE DELETION: " << overflowTable[i].ToString() << "         " << overflowTable[i].isDeleted();
-					overflowTable[i].setDeleteStatus(true);
-					//cout << "AFTER DELETION: " << overflowTable[i].ToString() << "         " << overflowTable[i].isDeleted();
+				if (hashTable[i].isDeleted() == false) {
+					hashTable[i].setDeleteStatus(true);
 					cout << "\nDeletion Successful\n\n";
 				}
 				else {
 					cout << "Student with id # " << id << " already deleted\n\n";
+				}
+			}
+		}
+		if (!wasDeleted && !IsOverflowTableEmpty()) { //check overflow table
+			for (int i = 0; i < overflowTableSize; i++) {
+				if (overflowTable[i].getID() == id) {
+					wasDeleted = true;
+					if (overflowTable[i].isDeleted() == false) {
+						overflowTable[i].setDeleteStatus(true);
+						cout << "\nDeletion Successful\n\n";
+					}
+					else {
+						cout << "Student with id # " << id << " already deleted\n\n";
+					}
 				}
 			}
 		}
@@ -193,11 +190,20 @@ void HashTable::SearchByID(int id, string header, string border) const{
 			hashTable[index].ToString() + border + "\nLocation: Hash Table\n\n";
 	}
 	else {
-		for (int i = 0; i < overflowIndex && !wasFound; i++) {
-			if (overflowTable[i].getID() == id && !overflowTable[i].isDeleted()) {
+		for (int i = index + 1; i != index && !wasFound; i = (i + 1) % tableSize) {
+			if (hashTable[i].getID() == id && !hashTable[i].isDeleted()) {
 				wasFound = true;
 				rec += "\n\nRECORD FOUND:\n\n" + header + border +
-					overflowTable[i].ToString() + border + "\nLocation: Overflow Array\n\n";
+					hashTable[i].ToString() + border + "\nLocation: Hash Table\n\n";
+			}
+		}
+		if (!IsOverflowTableEmpty()) {
+			for (int i = 0; i < overflowIndex && !wasFound; i++) {
+				if (overflowTable[i].getID() == id && !overflowTable[i].isDeleted()) {
+					wasFound = true;
+					rec += "\n\nRECORD FOUND:\n\n" + header + border +
+						overflowTable[i].ToString() + border + "\nLocation: Overflow Array\n\n";
+				}
 			}
 		}
 	}
@@ -209,33 +215,47 @@ void HashTable::SearchByID(int id, string header, string border) const{
 	}
 }
 
+/*pre: none
+post: the object is destroyed*/
+void HashTable::DeleteHashTable() {
+	delete[] hashTable;
+	delete[] overflowTable;
+
+	hashTable = nullptr;
+	overflowTable = nullptr;
+}
+
 /*pre: other must exist
 post: others values are copied into the Hash Table*/
-void HashTable::CopyTable(const HashTable& other) {
+void HashTable::CopyTable(const HashTable& other, StudentRecord* hashP, StudentRecord* overflowP) {
 	tableSize = other.tableSize;
 	overflowTableSize = other.overflowTableSize;
 	overflowIndex = other.overflowIndex;
 	numRecInTable = other.numRecInTable;
-	SetTable(tableSize);
 	for (int i = 0; i < tableSize; i++) {
-		hashTable[i] = other.hashTable[i];
+		hashP[i] = other.hashTable[i];
 	}
 	for (int i = 0; i < overflowTableSize; i++) {
-		overflowTable[i] = other.overflowTable[i];
+		overflowP[i] = other.overflowTable[i];
 	}
 }
 
 /*pre: other must exist
 post: other is copied into the current object*/
 HashTable::HashTable(const HashTable& other) {
+	//
 	try {
-		CopyTable(other);
+		hashTable = new StudentRecord[other.tableSize];
+		overflowTable = new StudentRecord[other.overflowTableSize];
+		CopyTable(other, hashTable, overflowTable);
 	}
 	catch(std::bad_alloc error){
 		tableSize = 0;
 		overflowTableSize = 0;
 		overflowIndex = 0;
 		numRecInTable = 0;
+		delete[] hashTable;
+		delete[] overflowTable;
 		hashTable = nullptr;
 		overflowTable = nullptr;
 		cout << "Copy Failed, " << error.what();
@@ -245,20 +265,22 @@ HashTable::HashTable(const HashTable& other) {
 /*pre: RHS must exist
 post: RHS is copied into LHS*/
 HashTable& HashTable::operator=(const HashTable& RHS) {
+	StudentRecord* tempP = nullptr;
+	StudentRecord* overflowP = nullptr;
 	try {
-		if (this != &RHS) {
-			DeleteHashTable();
-			CopyTable(RHS);
-		}
+		tempP = new StudentRecord[RHS.tableSize];
+		overflowP = new StudentRecord[RHS.overflowTableSize];
+		CopyTable(RHS, tempP, overflowP);
+		DeleteHashTable();
+		hashTable = tempP;
+		overflowTable = overflowP;
 	}
 	catch (std::bad_alloc error) {
-		tableSize = 0;
-		overflowTableSize = 0;
-		overflowIndex = 0;
-		numRecInTable = 0;
-		hashTable = nullptr;
-		overflowTable = nullptr;
-		cout << "Copy Failed, " << error.what();
+		delete[] tempP;
+		delete[] overflowP;
+		tempP = nullptr;
+		overflowP = nullptr;
+		cout << "Copy Failed, original is still intact" << error.what();
 	}
 	return *this;
 }

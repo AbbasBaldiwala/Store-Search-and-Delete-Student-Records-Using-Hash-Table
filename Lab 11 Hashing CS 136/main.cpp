@@ -209,9 +209,8 @@ void ProcessRecords(HashTable& ht, string inFileName, string outFileName) {
 		cout << "The Hash Table and Overflow Table are full.\n"
 			"Any unprocessed Student records are put inside " << outFileName << "\n";
 	}
-	else if (ht.IsOverflowTableFull()) {
-		cout << "The Overflow Table is full.\n"
-			"Any unprocessed Student records are put inside " << outFileName << "\n";
+	else {
+		cout << "All Records were successfully stored.\n";
 	}
 	inFile.close();
 	outFile.close();
@@ -307,148 +306,15 @@ ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 887420262   BARBARA        JONES                   97
 900100006   JAMES          STEWART                  0
 900588333   JOHN           SANCHEZ                 83
-900341240   WILLIAM        REED                    87
-884184644   MARIA          MILLER                  85
-888175671   MARY           SMITH                   44
-900761648   CHRISTOPHER    RIVERA                  33
-888845822   SANDRA         MARTIN                   8
-900241601   MICHAEL        ROGERS                  27
-885480567   LINDA          WILLIAMS                42
 900940342   ROBERT         MORRIS                  55
 887080838   ELIZABETH      BROWN                   53
------------------------------------------------------
-
-
-MENU:
-1. SEARCH BY ID
-2. DELETE RECORD
-3. PRINT ALL ACTIVE
-4. PRINT ALL DELETED
-5. GET ALL UNPROCESSED
-6. QUIT
-
-1
-Enter the Students ID #(9 digits):
-887080838
-
-
-RECORD FOUND:
-
-ID #        FIRST NAME     LAST NAME      UNITS TAKEN
------------------------------------------------------
-887080838   ELIZABETH      BROWN                   53
------------------------------------------------------
-
-Location: Overflow Array
-
-
-
-MENU:
-1. SEARCH BY ID
-2. DELETE RECORD
-3. PRINT ALL ACTIVE
-4. PRINT ALL DELETED
-5. GET ALL UNPROCESSED
-6. QUIT
-
-2
-Enter the ID number of the student you want to delete(9 digits):
-887080838
-Deletion Successful
-
-
-
-MENU:
-1. SEARCH BY ID
-2. DELETE RECORD
-3. PRINT ALL ACTIVE
-4. PRINT ALL DELETED
-5. GET ALL UNPROCESSED
-6. QUIT
-
-3
-
-
-ID #        FIRST NAME     LAST NAME      UNITS TAKEN
------------------------------------------------------
-887390880   PATRICIA       JOHNSON                 92
-887420262   BARBARA        JONES                   97
-900100006   JAMES          STEWART                  0
-900588333   JOHN           SANCHEZ                 83
-900341240   WILLIAM        REED                    87
-884184644   MARIA          MILLER                  85
 888175671   MARY           SMITH                   44
-900761648   CHRISTOPHER    RIVERA                  33
-888845822   SANDRA         MARTIN                   8
-900241601   MICHAEL        ROGERS                  27
 885480567   LINDA          WILLIAMS                42
-900940342   ROBERT         MORRIS                  55
------------------------------------------------------
-
-
-MENU:
-1. SEARCH BY ID
-2. DELETE RECORD
-3. PRINT ALL ACTIVE
-4. PRINT ALL DELETED
-5. GET ALL UNPROCESSED
-6. QUIT
-
-1
-Enter the Students ID #(9 digits):
-888845822
-
-
-RECORD FOUND:
-
-ID #        FIRST NAME     LAST NAME      UNITS TAKEN
------------------------------------------------------
-888845822   SANDRA         MARTIN                   8
------------------------------------------------------
-
-Location: Hash Table
-
-
-
-MENU:
-1. SEARCH BY ID
-2. DELETE RECORD
-3. PRINT ALL ACTIVE
-4. PRINT ALL DELETED
-5. GET ALL UNPROCESSED
-6. QUIT
-
-2
-Enter the ID number of the student you want to delete(9 digits):
-888845822
-Deletion Successful
-
-
-
-MENU:
-1. SEARCH BY ID
-2. DELETE RECORD
-3. PRINT ALL ACTIVE
-4. PRINT ALL DELETED
-5. GET ALL UNPROCESSED
-6. QUIT
-
-3
-
-
-ID #        FIRST NAME     LAST NAME      UNITS TAKEN
------------------------------------------------------
-887390880   PATRICIA       JOHNSON                 92
-887420262   BARBARA        JONES                   97
-900100006   JAMES          STEWART                  0
-900588333   JOHN           SANCHEZ                 83
 900341240   WILLIAM        REED                    87
-884184644   MARIA          MILLER                  85
-888175671   MARY           SMITH                   44
-900761648   CHRISTOPHER    RIVERA                  33
 900241601   MICHAEL        ROGERS                  27
-885480567   LINDA          WILLIAMS                42
-900940342   ROBERT         MORRIS                  55
+886215457   JENNIFER       DAVIS                   88
+900930645   DAVID          COOK                    73
+884184644   MARIA          MILLER                  85
 -----------------------------------------------------
 
 
@@ -463,11 +329,8 @@ MENU:
 4
 
 
-ID #        FIRST NAME     LAST NAME      UNITS TAKEN
------------------------------------------------------
-888845822   SANDRA         MARTIN                   8
-887080838   ELIZABETH      BROWN                   53
------------------------------------------------------
+NO DELETED STUDENT RECORDS EXIST
+
 
 
 MENU:
@@ -483,8 +346,6 @@ MENU:
 
 ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 -----------------------------------------------------
-886215457   JENNIFER       DAVIS                   88
-900930645   DAVID          COOK                    73
 900293220   RICHARD        MORGAN                 100
 887166642   SUSAN          WILSON                  44
 900469441   CHARLES        BELL                    46
@@ -493,6 +354,7 @@ ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 888535894   DOROTHY        TAYLOR                  91
 900954068   THOMAS         BAILEY                  43
 888726173   LISA           ANDERSON                53
+900761648   CHRISTOPHER    RIVERA                  33
 884872635   NANCY          THOMAS                  69
 900778313   DANIEL         COOPER                  30
 888378591   KAREN          JACKSON                  7
@@ -501,6 +363,7 @@ ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 900605756   MARK           COX                     50
 883792379   HELEN          HARRIS                  92
 900703588   DONALD         HOWARD                  24
+888845822   SANDRA         MARTIN                   8
 900677981   GEORGE         WARD                     7
 889549774   DONNA          THOMPSON                77
 900640029   KENNETH        TORRES                  33
@@ -573,6 +436,159 @@ ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 900361905   ABBAS          BALDIWALA               50
 -----------------------------------------------------
 
+
+
+MENU:
+1. SEARCH BY ID
+2. DELETE RECORD
+3. PRINT ALL ACTIVE
+4. PRINT ALL DELETED
+5. GET ALL UNPROCESSED
+6. QUIT
+
+1
+Enter the Students ID #(9 digits):
+884184644
+
+
+RECORD FOUND:
+
+ID #        FIRST NAME     LAST NAME      UNITS TAKEN
+-----------------------------------------------------
+884184644   MARIA          MILLER                  85
+-----------------------------------------------------
+
+Location: Overflow Array
+
+
+
+MENU:
+1. SEARCH BY ID
+2. DELETE RECORD
+3. PRINT ALL ACTIVE
+4. PRINT ALL DELETED
+5. GET ALL UNPROCESSED
+6. QUIT
+
+2
+Enter the ID number of the student you want to delete(9 digits):
+884184644
+
+Deletion Successful
+
+
+
+MENU:
+1. SEARCH BY ID
+2. DELETE RECORD
+3. PRINT ALL ACTIVE
+4. PRINT ALL DELETED
+5. GET ALL UNPROCESSED
+6. QUIT
+
+3
+
+
+ID #        FIRST NAME     LAST NAME      UNITS TAKEN
+-----------------------------------------------------
+887390880   PATRICIA       JOHNSON                 92
+887420262   BARBARA        JONES                   97
+900100006   JAMES          STEWART                  0
+900588333   JOHN           SANCHEZ                 83
+900940342   ROBERT         MORRIS                  55
+887080838   ELIZABETH      BROWN                   53
+888175671   MARY           SMITH                   44
+885480567   LINDA          WILLIAMS                42
+900341240   WILLIAM        REED                    87
+900241601   MICHAEL        ROGERS                  27
+886215457   JENNIFER       DAVIS                   88
+900930645   DAVID          COOK                    73
+-----------------------------------------------------
+
+
+MENU:
+1. SEARCH BY ID
+2. DELETE RECORD
+3. PRINT ALL ACTIVE
+4. PRINT ALL DELETED
+5. GET ALL UNPROCESSED
+6. QUIT
+
+1
+Enter the Students ID #(9 digits):
+887390880
+
+
+RECORD FOUND:
+
+ID #        FIRST NAME     LAST NAME      UNITS TAKEN
+-----------------------------------------------------
+887390880   PATRICIA       JOHNSON                 92
+-----------------------------------------------------
+
+Location: Hash Table
+
+
+
+MENU:
+1. SEARCH BY ID
+2. DELETE RECORD
+3. PRINT ALL ACTIVE
+4. PRINT ALL DELETED
+5. GET ALL UNPROCESSED
+6. QUIT
+
+2
+Enter the ID number of the student you want to delete(9 digits):
+887390880
+
+Deletion Successful
+
+
+
+MENU:
+1. SEARCH BY ID
+2. DELETE RECORD
+3. PRINT ALL ACTIVE
+4. PRINT ALL DELETED
+5. GET ALL UNPROCESSED
+6. QUIT
+
+3
+
+
+ID #        FIRST NAME     LAST NAME      UNITS TAKEN
+-----------------------------------------------------
+887420262   BARBARA        JONES                   97
+900100006   JAMES          STEWART                  0
+900588333   JOHN           SANCHEZ                 83
+900940342   ROBERT         MORRIS                  55
+887080838   ELIZABETH      BROWN                   53
+888175671   MARY           SMITH                   44
+885480567   LINDA          WILLIAMS                42
+900341240   WILLIAM        REED                    87
+900241601   MICHAEL        ROGERS                  27
+886215457   JENNIFER       DAVIS                   88
+900930645   DAVID          COOK                    73
+-----------------------------------------------------
+
+
+MENU:
+1. SEARCH BY ID
+2. DELETE RECORD
+3. PRINT ALL ACTIVE
+4. PRINT ALL DELETED
+5. GET ALL UNPROCESSED
+6. QUIT
+
+4
+
+
+ID #        FIRST NAME     LAST NAME      UNITS TAKEN
+-----------------------------------------------------
+887390880   PATRICIA       JOHNSON                 92
+884184644   MARIA          MILLER                  85
+-----------------------------------------------------
 
 
 MENU:
@@ -598,8 +614,7 @@ Enter how large the table should be:
 ENTER 4 TO QUIT
 
 2
-The Overflow Table is full.
-Any unprocessed Student records are put inside Unprocessed_Records.txt
+All Records were successfully stored.
 
 
 MENU:
@@ -617,165 +632,106 @@ ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 -----------------------------------------------------
 887080838   ELIZABETH      BROWN                   53
 887390880   PATRICIA       JOHNSON                 92
-900134947   DOUGLAS        BRYANT                   3
+900725648   JOSEPH         MURPHY                  83
+885498967   BRENDA         WRIGHT                  20
 887166642   SUSAN          WILSON                  44
+886486581   AMY            LOPEZ                   64
 900293220   RICHARD        MORGAN                 100
+885000935   SHIRLEY        ALLEN                   29
+885285124   ANNA           HILL                    95
+900134947   DOUGLAS        BRYANT                   3
+883851920   DIANE          COLLINS                 58
+900875997   ROGER          HAYES                   66
 883520571   MARTHA         GONZALEZ                78
 881140540   MARGARET       MOORE                   44
 886006403   BETTY          WHITE                   35
 900640029   KENNETH        TORRES                  33
+900341255   RAYMOND        LONG                    52
+900242765   PATRICK        SIMMONS                 93
+900604666   PETER          FOSTER                  90
 887420262   BARBARA        JONES                   97
 900100006   JAMES          STEWART                  0
+900250439   PAUL           RICHARDSON               4
 900930645   DAVID          COOK                    73
 900605756   MARK           COX                     50
+900703588   DONALD         HOWARD                  24
 900368838   RONALD         JAMES                    3
-900677430   KEVIN          BROOKS                  33
 900940342   ROBERT         MORRIS                  55
+900677430   KEVIN          BROOKS                  33
 900946253   TIMOTHY        BENNETT                 92
 900954068   THOMAS         BAILEY                  43
-886476276   JANET          PHILLIPS                59
+900245134   FRANK          HENDERSON               46
+900854289   SCOTT          COLEMAN                 38
+889455027   PAMELA         BAKER                   87
+889657972   MARIE          TURNER                  87
 886236141   LAURA          RODRIGUEZ               84
 900173603   GARY           PRICE                   75
 889549774   DONNA          THOMPSON                77
+900735327   DENNIS         WASHINGTON              78
 900952007   ANTHONY        WATSON                  45
 900588333   JOHN           SANCHEZ                 83
 889913879   AMANDA         CARTER                  46
 886641406   DEBORAH        WALKER                  35
 900341240   WILLIAM        REED                    87
+885971153   CAROLYN        PEREZ                    2
 886215457   JENNIFER       DAVIS                   88
+900420830   MATTHEW        SANDERS                 93
 888026287   VIRGINIA       GREEN                   81
 888535894   DOROTHY        TAYLOR                  91
 900317444   GREGORY        PATTERSON               35
+884377300   DEBRA          NELSON                  50
+900145742   HAROLD         GONZALES                31
+886476276   JANET          PHILLIPS                59
 888726173   LISA           ANDERSON                53
 900294213   JEFFREY        ROSS                    85
+884779857   CATHERINE      CAMPBELL                48
+900428467   HENRY          ALEXANDER                0
+882594525   FRANCES        PARKER                  99
 884184644   MARIA          MILLER                  85
+900130832   CARL           RUSSELL                 48
 883792379   HELEN          HARRIS                  92
+900677981   GEORGE         WARD                     7
 900848479   JASON          KELLY                   37
 900790828   EDWARD         GRAY                    25
 900469441   CHARLES        BELL                    46
-900302743   STEPHEN        PERRY                   16
+886663917   SARAH          LEWIS                   57
 888175671   MARY           SMITH                   44
+885480567   LINDA          WILLIAMS                42
+900226500   LARRY          BARNES                   7
 888378591   KAREN          JACKSON                  7
 900437635   BRIAN          RAMIREZ                 95
-900141033   JERRY          FLORES                  59
+900809077   ERIC           JENKINS                 11
+882762402   REBECCA        SCOTT                    4
 900778313   DANIEL         COOPER                  30
 884872635   NANCY          THOMAS                  69
+885768820   CAROL          GARCIA                  75
 900761648   CHRISTOPHER    RIVERA                  33
+900929048   STEVEN         PETERSON                28
 886876793   JESSICA        HALL                    40
+900302743   STEPHEN        PERRY                   16
+881307506   KATHLEEN       ADAMS                   43
+900821003   JOSHUA         HUGHES                  34
 884553660   SHARON         ROBINSON                 5
+900141033   JERRY          FLORES                  59
 889470398   ANGELA         HERNANDEZ               24
+882915223   STEPHANIE      MITCHELL                38
+882571225   CHRISTINE      ROBERTS                 35
+887709764   ANN            EVANS                   75
 882372762   CYNTHIA        YOUNG                   13
+900301484   ARTHUR         GRIFFIN                 83
 888845822   SANDRA         MARTIN                   8
 888681414   RUTH           MARTINEZ                97
+886884188   MELISSA        KING                    31
 900776683   WALTER         BUTLER                   6
 900241601   MICHAEL        ROGERS                  27
+888719664   MICHELLE       CLARK                    2
+900959057   ANDREW         POWELL                  12
+889636218   JOYCE          EDWARDS                 14
 900719443   JOSE           WOOD                    71
 900473665   RYAN           DIAZ                    13
 885807287   KIMBERLY       LEE                      1
-885480567   LINDA          WILLIAMS                42
-900725648   JOSEPH         MURPHY                  83
-900250439   PAUL           RICHARDSON               4
-900703588   DONALD         HOWARD                  24
-900677981   GEORGE         WARD                     7
-885768820   CAROL          GARCIA                  75
-900929048   STEVEN         PETERSON                28
-888719664   MICHELLE       CLARK                    2
-886663917   SARAH          LEWIS                   57
-900420830   MATTHEW        SANDERS                 93
-885000935   SHIRLEY        ALLEN                   29
-900226500   LARRY          BARNES                   7
-886884188   MELISSA        KING                    31
-885498967   BRENDA         WRIGHT                  20
-900245134   FRANK          HENDERSON               46
-886486581   AMY            LOPEZ                   64
-900854289   SCOTT          COLEMAN                 38
-885285124   ANNA           HILL                    95
-900809077   ERIC           JENKINS                 11
-882762402   REBECCA        SCOTT                    4
-900959057   ANDREW         POWELL                  12
-881307506   KATHLEEN       ADAMS                   43
-900341255   RAYMOND        LONG                    52
-889455027   PAMELA         BAKER                   87
-900821003   JOSHUA         HUGHES                  34
+900361905   ABBAS          BALDIWALA               50
 -----------------------------------------------------
-
-
-MENU:
-1. SEARCH BY ID
-2. DELETE RECORD
-3. PRINT ALL ACTIVE
-4. PRINT ALL DELETED
-5. GET ALL UNPROCESSED
-6. QUIT
-
-1
-Enter the Students ID #(9 digits):
-889455027
-
-
-RECORD FOUND:
-
-ID #        FIRST NAME     LAST NAME      UNITS TAKEN
------------------------------------------------------
-889455027   PAMELA         BAKER                   87
------------------------------------------------------
-
-Location: Overflow Array
-
-
-
-MENU:
-1. SEARCH BY ID
-2. DELETE RECORD
-3. PRINT ALL ACTIVE
-4. PRINT ALL DELETED
-5. GET ALL UNPROCESSED
-6. QUIT
-
-2
-Enter the ID number of the student you want to delete(9 digits):
-889455027
-Deletion Successful
-
-
-
-MENU:
-1. SEARCH BY ID
-2. DELETE RECORD
-3. PRINT ALL ACTIVE
-4. PRINT ALL DELETED
-5. GET ALL UNPROCESSED
-6. QUIT
-
-1
-Enter the Students ID #(9 digits):
-900821003
-
-
-RECORD FOUND:
-
-ID #        FIRST NAME     LAST NAME      UNITS TAKEN
------------------------------------------------------
-900821003   JOSHUA         HUGHES                  34
------------------------------------------------------
-
-Location: Overflow Array
-
-
-
-MENU:
-1. SEARCH BY ID
-2. DELETE RECORD
-3. PRINT ALL ACTIVE
-4. PRINT ALL DELETED
-5. GET ALL UNPROCESSED
-6. QUIT
-
-2
-Enter the ID number of the student you want to delete(9 digits):
-900821003
-Deletion Successful
-
 
 
 MENU:
@@ -790,27 +746,12 @@ MENU:
 Enter the Students ID #(9 digits):
 900361905
 
-No active student with ID 900361905 was found
-
-
-MENU:
-1. SEARCH BY ID
-2. DELETE RECORD
-3. PRINT ALL ACTIVE
-4. PRINT ALL DELETED
-5. GET ALL UNPROCESSED
-6. QUIT
-
-1
-Enter the Students ID #(9 digits):
-882762402
-
 
 RECORD FOUND:
 
 ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 -----------------------------------------------------
-882762402   REBECCA        SCOTT                    4
+900361905   ABBAS          BALDIWALA               50
 -----------------------------------------------------
 
 Location: Overflow Array
@@ -827,8 +768,33 @@ MENU:
 
 2
 Enter the ID number of the student you want to delete(9 digits):
-882762402
+900361905
+
 Deletion Successful
+
+
+
+MENU:
+1. SEARCH BY ID
+2. DELETE RECORD
+3. PRINT ALL ACTIVE
+4. PRINT ALL DELETED
+5. GET ALL UNPROCESSED
+6. QUIT
+
+1
+Enter the Students ID #(9 digits):
+887080838
+
+
+RECORD FOUND:
+
+ID #        FIRST NAME     LAST NAME      UNITS TAKEN
+-----------------------------------------------------
+887080838   ELIZABETH      BROWN                   53
+-----------------------------------------------------
+
+Location: Hash Table
 
 
 
@@ -842,8 +808,9 @@ MENU:
 
 2
 Enter the ID number of the student you want to delete(9 digits):
-900361905
-Student with id # 900361905 was not found.
+887080838
+
+Deletion Successful
 
 
 
@@ -860,85 +827,105 @@ MENU:
 
 ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 -----------------------------------------------------
-887080838   ELIZABETH      BROWN                   53
 887390880   PATRICIA       JOHNSON                 92
-900134947   DOUGLAS        BRYANT                   3
+900725648   JOSEPH         MURPHY                  83
+885498967   BRENDA         WRIGHT                  20
 887166642   SUSAN          WILSON                  44
+886486581   AMY            LOPEZ                   64
 900293220   RICHARD        MORGAN                 100
+885000935   SHIRLEY        ALLEN                   29
+885285124   ANNA           HILL                    95
+900134947   DOUGLAS        BRYANT                   3
+883851920   DIANE          COLLINS                 58
+900875997   ROGER          HAYES                   66
 883520571   MARTHA         GONZALEZ                78
 881140540   MARGARET       MOORE                   44
 886006403   BETTY          WHITE                   35
 900640029   KENNETH        TORRES                  33
+900341255   RAYMOND        LONG                    52
+900242765   PATRICK        SIMMONS                 93
+900604666   PETER          FOSTER                  90
 887420262   BARBARA        JONES                   97
 900100006   JAMES          STEWART                  0
+900250439   PAUL           RICHARDSON               4
 900930645   DAVID          COOK                    73
 900605756   MARK           COX                     50
+900703588   DONALD         HOWARD                  24
 900368838   RONALD         JAMES                    3
-900677430   KEVIN          BROOKS                  33
 900940342   ROBERT         MORRIS                  55
+900677430   KEVIN          BROOKS                  33
 900946253   TIMOTHY        BENNETT                 92
 900954068   THOMAS         BAILEY                  43
-886476276   JANET          PHILLIPS                59
+900245134   FRANK          HENDERSON               46
+900854289   SCOTT          COLEMAN                 38
+889455027   PAMELA         BAKER                   87
+889657972   MARIE          TURNER                  87
 886236141   LAURA          RODRIGUEZ               84
 900173603   GARY           PRICE                   75
 889549774   DONNA          THOMPSON                77
+900735327   DENNIS         WASHINGTON              78
 900952007   ANTHONY        WATSON                  45
 900588333   JOHN           SANCHEZ                 83
 889913879   AMANDA         CARTER                  46
 886641406   DEBORAH        WALKER                  35
 900341240   WILLIAM        REED                    87
+885971153   CAROLYN        PEREZ                    2
 886215457   JENNIFER       DAVIS                   88
+900420830   MATTHEW        SANDERS                 93
 888026287   VIRGINIA       GREEN                   81
 888535894   DOROTHY        TAYLOR                  91
 900317444   GREGORY        PATTERSON               35
+884377300   DEBRA          NELSON                  50
+900145742   HAROLD         GONZALES                31
+886476276   JANET          PHILLIPS                59
 888726173   LISA           ANDERSON                53
 900294213   JEFFREY        ROSS                    85
+884779857   CATHERINE      CAMPBELL                48
+900428467   HENRY          ALEXANDER                0
+882594525   FRANCES        PARKER                  99
 884184644   MARIA          MILLER                  85
+900130832   CARL           RUSSELL                 48
 883792379   HELEN          HARRIS                  92
+900677981   GEORGE         WARD                     7
 900848479   JASON          KELLY                   37
 900790828   EDWARD         GRAY                    25
 900469441   CHARLES        BELL                    46
-900302743   STEPHEN        PERRY                   16
+886663917   SARAH          LEWIS                   57
 888175671   MARY           SMITH                   44
+885480567   LINDA          WILLIAMS                42
+900226500   LARRY          BARNES                   7
 888378591   KAREN          JACKSON                  7
 900437635   BRIAN          RAMIREZ                 95
-900141033   JERRY          FLORES                  59
+900809077   ERIC           JENKINS                 11
+882762402   REBECCA        SCOTT                    4
 900778313   DANIEL         COOPER                  30
 884872635   NANCY          THOMAS                  69
+885768820   CAROL          GARCIA                  75
 900761648   CHRISTOPHER    RIVERA                  33
+900929048   STEVEN         PETERSON                28
 886876793   JESSICA        HALL                    40
+900302743   STEPHEN        PERRY                   16
+881307506   KATHLEEN       ADAMS                   43
+900821003   JOSHUA         HUGHES                  34
 884553660   SHARON         ROBINSON                 5
+900141033   JERRY          FLORES                  59
 889470398   ANGELA         HERNANDEZ               24
+882915223   STEPHANIE      MITCHELL                38
+882571225   CHRISTINE      ROBERTS                 35
+887709764   ANN            EVANS                   75
 882372762   CYNTHIA        YOUNG                   13
+900301484   ARTHUR         GRIFFIN                 83
 888845822   SANDRA         MARTIN                   8
 888681414   RUTH           MARTINEZ                97
+886884188   MELISSA        KING                    31
 900776683   WALTER         BUTLER                   6
 900241601   MICHAEL        ROGERS                  27
+888719664   MICHELLE       CLARK                    2
+900959057   ANDREW         POWELL                  12
+889636218   JOYCE          EDWARDS                 14
 900719443   JOSE           WOOD                    71
 900473665   RYAN           DIAZ                    13
 885807287   KIMBERLY       LEE                      1
-885480567   LINDA          WILLIAMS                42
-900725648   JOSEPH         MURPHY                  83
-900250439   PAUL           RICHARDSON               4
-900703588   DONALD         HOWARD                  24
-900677981   GEORGE         WARD                     7
-885768820   CAROL          GARCIA                  75
-900929048   STEVEN         PETERSON                28
-888719664   MICHELLE       CLARK                    2
-886663917   SARAH          LEWIS                   57
-900420830   MATTHEW        SANDERS                 93
-885000935   SHIRLEY        ALLEN                   29
-900226500   LARRY          BARNES                   7
-886884188   MELISSA        KING                    31
-885498967   BRENDA         WRIGHT                  20
-900245134   FRANK          HENDERSON               46
-886486581   AMY            LOPEZ                   64
-900854289   SCOTT          COLEMAN                 38
-885285124   ANNA           HILL                    95
-900809077   ERIC           JENKINS                 11
-900959057   ANDREW         POWELL                  12
-881307506   KATHLEEN       ADAMS                   43
-900341255   RAYMOND        LONG                    52
 -----------------------------------------------------
 
 
@@ -955,9 +942,8 @@ MENU:
 
 ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 -----------------------------------------------------
-882762402   REBECCA        SCOTT                    4
-889455027   PAMELA         BAKER                   87
-900821003   JOSHUA         HUGHES                  34
+887080838   ELIZABETH      BROWN                   53
+900361905   ABBAS          BALDIWALA               50
 -----------------------------------------------------
 
 
@@ -971,29 +957,7 @@ MENU:
 
 5
 
-
-ID #        FIRST NAME     LAST NAME      UNITS TAKEN
------------------------------------------------------
-884377300   DEBRA          NELSON                  50
-900735327   DENNIS         WASHINGTON              78
-882915223   STEPHANIE      MITCHELL                38
-885971153   CAROLYN        PEREZ                    2
-900242765   PATRICK        SIMMONS                 93
-882571225   CHRISTINE      ROBERTS                 35
-900604666   PETER          FOSTER                  90
-889657972   MARIE          TURNER                  87
-900145742   HAROLD         GONZALES                31
-884779857   CATHERINE      CAMPBELL                48
-900428467   HENRY          ALEXANDER                0
-882594525   FRANCES        PARKER                  99
-900130832   CARL           RUSSELL                 48
-887709764   ANN            EVANS                   75
-900301484   ARTHUR         GRIFFIN                 83
-889636218   JOYCE          EDWARDS                 14
-883851920   DIANE          COLLINS                 58
-900875997   ROGER          HAYES                   66
-900361905   ABBAS          BALDIWALA               50
------------------------------------------------------
+NO UNPROCESSED STUDENT RECORDS EXIST
 
 
 
@@ -1020,6 +984,7 @@ Enter how large the table should be:
 ENTER 4 TO QUIT
 
 3
+All Records were successfully stored.
 
 
 MENU:
@@ -1040,6 +1005,7 @@ ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 886486581   AMY            LOPEZ                   64
 887080838   ELIZABETH      BROWN                   53
 887390880   PATRICIA       JOHNSON                 92
+885498967   BRENDA         WRIGHT                  20
 885285124   ANNA           HILL                    95
 900134947   DOUGLAS        BRYANT                   3
 887166642   SUSAN          WILSON                  44
@@ -1050,17 +1016,21 @@ ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 900242765   PATRICK        SIMMONS                 93
 881140540   MARGARET       MOORE                   44
 900341255   RAYMOND        LONG                    52
+882594525   FRANCES        PARKER                  99
 886006403   BETTY          WHITE                   35
 900640029   KENNETH        TORRES                  33
 887709764   ANN            EVANS                   75
 887420262   BARBARA        JONES                   97
+900250439   PAUL           RICHARDSON               4
 900703588   DONALD         HOWARD                  24
 900100006   JAMES          STEWART                  0
 900245134   FRANK          HENDERSON               46
 900428467   HENRY          ALEXANDER                0
 900930645   DAVID          COOK                    73
 900605756   MARK           COX                     50
+900145742   HAROLD         GONZALES                31
 900368838   RONALD         JAMES                    3
+900854289   SCOTT          COLEMAN                 38
 889455027   PAMELA         BAKER                   87
 900677430   KEVIN          BROOKS                  33
 900940342   ROBERT         MORRIS                  55
@@ -1103,6 +1073,7 @@ ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 900302743   STEPHEN        PERRY                   16
 900821003   JOSHUA         HUGHES                  34
 885480567   LINDA          WILLIAMS                42
+889636218   JOYCE          EDWARDS                 14
 888175671   MARY           SMITH                   44
 882762402   REBECCA        SCOTT                    4
 888378591   KAREN          JACKSON                  7
@@ -1122,6 +1093,7 @@ ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 882372762   CYNTHIA        YOUNG                   13
 888845822   SANDRA         MARTIN                   8
 888681414   RUTH           MARTINEZ                97
+886884188   MELISSA        KING                    31
 900776683   WALTER         BUTLER                   6
 900241601   MICHAEL        ROGERS                  27
 888719664   MICHELLE       CLARK                    2
@@ -1129,13 +1101,6 @@ ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 900719443   JOSE           WOOD                    71
 900473665   RYAN           DIAZ                    13
 885807287   KIMBERLY       LEE                      1
-900250439   PAUL           RICHARDSON               4
-886884188   MELISSA        KING                    31
-885498967   BRENDA         WRIGHT                  20
-900854289   SCOTT          COLEMAN                 38
-900145742   HAROLD         GONZALES                31
-882594525   FRANCES        PARKER                  99
-889636218   JOYCE          EDWARDS                 14
 -----------------------------------------------------
 
 
@@ -1149,14 +1114,14 @@ MENU:
 
 1
 Enter the Students ID #(9 digits):
-900361905
+885807287
 
 
 RECORD FOUND:
 
 ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 -----------------------------------------------------
-900361905   ABBAS          BALDIWALA               50
+885807287   KIMBERLY       LEE                      1
 -----------------------------------------------------
 
 Location: Hash Table
@@ -1173,7 +1138,8 @@ MENU:
 
 2
 Enter the ID number of the student you want to delete(9 digits):
-900361905
+885807287
+
 Deletion Successful
 
 
@@ -1188,53 +1154,14 @@ MENU:
 
 1
 Enter the Students ID #(9 digits):
-889636218
+900473665
 
 
 RECORD FOUND:
 
 ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 -----------------------------------------------------
-889636218   JOYCE          EDWARDS                 14
------------------------------------------------------
-
-Location: Overflow Array
-
-
-
-MENU:
-1. SEARCH BY ID
-2. DELETE RECORD
-3. PRINT ALL ACTIVE
-4. PRINT ALL DELETED
-5. GET ALL UNPROCESSED
-6. QUIT
-
-2
-Enter the ID number of the student you want to delete(9 digits):
-889636218
-Deletion Successful
-
-
-
-MENU:
-1. SEARCH BY ID
-2. DELETE RECORD
-3. PRINT ALL ACTIVE
-4. PRINT ALL DELETED
-5. GET ALL UNPROCESSED
-6. QUIT
-
-1
-Enter the Students ID #(9 digits):
-885285124
-
-
-RECORD FOUND:
-
-ID #        FIRST NAME     LAST NAME      UNITS TAKEN
------------------------------------------------------
-885285124   ANNA           HILL                    95
+900473665   RYAN           DIAZ                    13
 -----------------------------------------------------
 
 Location: Hash Table
@@ -1251,8 +1178,24 @@ MENU:
 
 2
 Enter the ID number of the student you want to delete(9 digits):
-885285124
+900473665
+
 Deletion Successful
+
+
+
+MENU:
+1. SEARCH BY ID
+2. DELETE RECORD
+3. PRINT ALL ACTIVE
+4. PRINT ALL DELETED
+5. GET ALL UNPROCESSED
+6. QUIT
+
+2
+Enter the ID number of the student you want to delete(9 digits):
+900473665
+Student with id # 900473665 already deleted
 
 
 
@@ -1274,6 +1217,8 @@ ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 886486581   AMY            LOPEZ                   64
 887080838   ELIZABETH      BROWN                   53
 887390880   PATRICIA       JOHNSON                 92
+885498967   BRENDA         WRIGHT                  20
+885285124   ANNA           HILL                    95
 900134947   DOUGLAS        BRYANT                   3
 887166642   SUSAN          WILSON                  44
 885000935   SHIRLEY        ALLEN                   29
@@ -1283,23 +1228,28 @@ ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 900242765   PATRICK        SIMMONS                 93
 881140540   MARGARET       MOORE                   44
 900341255   RAYMOND        LONG                    52
+882594525   FRANCES        PARKER                  99
 886006403   BETTY          WHITE                   35
 900640029   KENNETH        TORRES                  33
 887709764   ANN            EVANS                   75
 887420262   BARBARA        JONES                   97
+900250439   PAUL           RICHARDSON               4
 900703588   DONALD         HOWARD                  24
 900100006   JAMES          STEWART                  0
 900245134   FRANK          HENDERSON               46
 900428467   HENRY          ALEXANDER                0
 900930645   DAVID          COOK                    73
 900605756   MARK           COX                     50
+900145742   HAROLD         GONZALES                31
 900368838   RONALD         JAMES                    3
+900854289   SCOTT          COLEMAN                 38
 889455027   PAMELA         BAKER                   87
 900677430   KEVIN          BROOKS                  33
 900940342   ROBERT         MORRIS                  55
 900301484   ARTHUR         GRIFFIN                 83
 900946253   TIMOTHY        BENNETT                 92
 900954068   THOMAS         BAILEY                  43
+900361905   ABBAS          BALDIWALA               50
 889657972   MARIE          TURNER                  87
 886476276   JANET          PHILLIPS                59
 886236141   LAURA          RODRIGUEZ               84
@@ -1335,6 +1285,7 @@ ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 900302743   STEPHEN        PERRY                   16
 900821003   JOSHUA         HUGHES                  34
 885480567   LINDA          WILLIAMS                42
+889636218   JOYCE          EDWARDS                 14
 888175671   MARY           SMITH                   44
 882762402   REBECCA        SCOTT                    4
 888378591   KAREN          JACKSON                  7
@@ -1354,34 +1305,13 @@ ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 882372762   CYNTHIA        YOUNG                   13
 888845822   SANDRA         MARTIN                   8
 888681414   RUTH           MARTINEZ                97
+886884188   MELISSA        KING                    31
 900776683   WALTER         BUTLER                   6
 900241601   MICHAEL        ROGERS                  27
 888719664   MICHELLE       CLARK                    2
 900959057   ANDREW         POWELL                  12
 900719443   JOSE           WOOD                    71
-900473665   RYAN           DIAZ                    13
-885807287   KIMBERLY       LEE                      1
-900250439   PAUL           RICHARDSON               4
-886884188   MELISSA        KING                    31
-885498967   BRENDA         WRIGHT                  20
-900854289   SCOTT          COLEMAN                 38
-900145742   HAROLD         GONZALES                31
-882594525   FRANCES        PARKER                  99
 -----------------------------------------------------
-
-
-MENU:
-1. SEARCH BY ID
-2. DELETE RECORD
-3. PRINT ALL ACTIVE
-4. PRINT ALL DELETED
-5. GET ALL UNPROCESSED
-6. QUIT
-
-5
-
-NO UNPROCESSED STUDENT RECORDS EXIST
-
 
 
 MENU:
@@ -1397,10 +1327,23 @@ MENU:
 
 ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 -----------------------------------------------------
-885285124   ANNA           HILL                    95
-900361905   ABBAS          BALDIWALA               50
-889636218   JOYCE          EDWARDS                 14
+900473665   RYAN           DIAZ                    13
+885807287   KIMBERLY       LEE                      1
 -----------------------------------------------------
+
+
+MENU:
+1. SEARCH BY ID
+2. DELETE RECORD
+3. PRINT ALL ACTIVE
+4. PRINT ALL DELETED
+5. GET ALL UNPROCESSED
+6. QUIT
+
+5
+
+NO UNPROCESSED STUDENT RECORDS EXIST
+
 
 
 MENU:
@@ -1511,49 +1454,8 @@ QUITTING...
 
 */
 
-//TEST #5 (Deleting an already deleted record)
+//TEST #5 (Deleting an already deleted record and searching for a deleted student)
 /*
-Enter how large the table should be:
-1. 10
-2. 100
-3. 1000
-
-ENTER 4 TO QUIT
-
-1
-The Hash Table and Overflow Table are full.
-Any unprocessed Student records are put inside Unprocessed_Records.txt
-
-
-MENU:
-1. SEARCH BY ID
-2. DELETE RECORD
-3. PRINT ALL ACTIVE
-4. PRINT ALL DELETED
-5. GET ALL UNPROCESSED
-6. QUIT
-
-3
-
-
-ID #        FIRST NAME     LAST NAME      UNITS TAKEN
------------------------------------------------------
-887390880   PATRICIA       JOHNSON                 92
-887420262   BARBARA        JONES                   97
-900100006   JAMES          STEWART                  0
-900588333   JOHN           SANCHEZ                 83
-900341240   WILLIAM        REED                    87
-884184644   MARIA          MILLER                  85
-888175671   MARY           SMITH                   44
-900761648   CHRISTOPHER    RIVERA                  33
-888845822   SANDRA         MARTIN                   8
-900241601   MICHAEL        ROGERS                  27
-885480567   LINDA          WILLIAMS                42
-900940342   ROBERT         MORRIS                  55
-887080838   ELIZABETH      BROWN                   53
------------------------------------------------------
-
-
 MENU:
 1. SEARCH BY ID
 2. DELETE RECORD
@@ -1564,7 +1466,7 @@ MENU:
 
 2
 Enter the ID number of the student you want to delete(9 digits):
-887080838
+900940342
 
 Deletion Successful
 
@@ -1578,10 +1480,25 @@ MENU:
 5. GET ALL UNPROCESSED
 6. QUIT
 
+1
+Enter the Students ID #(9 digits):
+900940342
+
+No active student with ID 900940342 was found
+
+
+MENU:
+1. SEARCH BY ID
+2. DELETE RECORD
+3. PRINT ALL ACTIVE
+4. PRINT ALL DELETED
+5. GET ALL UNPROCESSED
+6. QUIT
+
 2
 Enter the ID number of the student you want to delete(9 digits):
-887080838
-Student with id # 887080838 already deleted
+900940342
+Student with id # 900940342 already deleted
 
 
 
@@ -1602,14 +1519,14 @@ ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 887420262   BARBARA        JONES                   97
 900100006   JAMES          STEWART                  0
 900588333   JOHN           SANCHEZ                 83
-900341240   WILLIAM        REED                    87
-884184644   MARIA          MILLER                  85
+887080838   ELIZABETH      BROWN                   53
 888175671   MARY           SMITH                   44
-900761648   CHRISTOPHER    RIVERA                  33
-888845822   SANDRA         MARTIN                   8
-900241601   MICHAEL        ROGERS                  27
 885480567   LINDA          WILLIAMS                42
-900940342   ROBERT         MORRIS                  55
+900341240   WILLIAM        REED                    87
+900241601   MICHAEL        ROGERS                  27
+886215457   JENNIFER       DAVIS                   88
+900930645   DAVID          COOK                    73
+884184644   MARIA          MILLER                  85
 -----------------------------------------------------
 
 
@@ -1626,7 +1543,7 @@ MENU:
 
 ID #        FIRST NAME     LAST NAME      UNITS TAKEN
 -----------------------------------------------------
-887080838   ELIZABETH      BROWN                   53
+900940342   ROBERT         MORRIS                  55
 -----------------------------------------------------
 
 
